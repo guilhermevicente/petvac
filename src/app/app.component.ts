@@ -9,6 +9,7 @@ import * as M from 'materialize-css';
 })
 export class AppComponent implements AfterViewInit {
   title = 'petvac';
+  isWorkingInPage = true;
 
   ngAfterViewInit(): void {
       //M.Sidenav.init(this.sideNav?.nativeElement);
