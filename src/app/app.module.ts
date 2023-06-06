@@ -7,6 +7,14 @@ import { CreatePetComponent } from './create-pet/create-pet.component';
 import { ListPetComponent } from './list-pet/list-pet.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { PetsComponent } from './pets/pets.component';
+import { VacinasComponent } from './vacinas/vacinas.component';
+import { ConsultasComponent } from './consultas/consultas.component';
+import { MedicacaoComponent } from './medicacao/medicacao.component';
+import { ServicosComponent } from './servicos/servicos.component';
+import { ExamesComponent } from './exames/exames.component';
+import { PetSelecionadoComponent } from './pet-selecionado/pet-selecionado.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +22,15 @@ import { FooterComponent } from './footer/footer.component';
     CreatePetComponent,
     ListPetComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    PetsComponent,
+    VacinasComponent,
+    ConsultasComponent,
+    MedicacaoComponent,
+    ServicosComponent,
+    ExamesComponent,
+    PetSelecionadoComponent
   ],
   imports: [
     BrowserModule,
