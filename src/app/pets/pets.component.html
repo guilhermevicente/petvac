@@ -1,0 +1,19 @@
+<p>pets works!</p>
+
+<span>
+  <div>
+    <h5>Pets</h5>
+    <hr />
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="input-field col s12">
+          <input id="nome-pet" (keyup)="nomearPet($event)"/>
+        </div>
+      </div>
+      <div class="row">
+        <app-pet-selecionado [nomePet]="this.nomePet"></app-pet-selecionado>
+      </div>
+    </div>
+  </div>
+
+</span>
