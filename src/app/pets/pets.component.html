@@ -1,19 +1,93 @@
-<p>pets works!</p>
-
-<span>
-  <div>
-    <h5>Pets</h5>
-    <hr />
-    <div class="row">
-      <div class="col s12 m6">
-        <div class="input-field col s12">
-          <input id="nome-pet" (keyup)="nomearPet($event)"/>
+<div class="container contact">
+  <h5>Pets</h5>
+  <hr />
+  <div class="row">
+    <div class="col s12">
+      <div id="mensagem" class="card-panel white-text" [class.red]="!this.isSuccess" [class.blue]="this.isSuccess" *ngIf="this.isShowMessage">
+        {{ this.message }}
+      </div>
+    </div>
+    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col">
+          <label>Nome:</label>
+          <br>
+          <input id="nome-pet" name="nome-pet" type="text" class="validate" [(ngModel)]="this.pet.nome" pattern="^[A-Za-z]+$" #nome="ngModel" required/>
+          <div class="red-text" [hidden]="nome.valid || nome.untouched">Por favor, informe um nome válido para o seu pet.</div>
+          <div class="red-text" *ngIf="nome.errors?.['required'] && nome.touched">Por favor, informe o nome do seu pet.</div>
+          <span class="helper-text" data-error="O campo é inválido" data-success="Ok!"></span>
+        </div>
+        <div class="input-field col">
+          <label>Data de nascimento:</label>
+          <br>
+          <input id="nascimento-pet" name="nascimento-pet" type="date" class="validate" [(ngModel)]="this.pet.dataNascimento" #nascimento="ngModel" required>
+          <div class="red-text" *ngIf="nascimento.errors?.['required'] && nascimento.touched">Por favor, informe a data de nascimento do seu pet.</div>
         </div>
       </div>
       <div class="row">
-        <app-pet-selecionado [nomePet]="this.nomePet"></app-pet-selecionado>
+        <div class="input-field col">
+          <label for="select-especie">Especie</label>
+          <br><br>
+          <select id="select-especie" name="select-especie" class="browser-default"
+            (change)="onChangeEspecie()" [compareWith]="compareEspecies"
+            [(ngModel)]="this.pet.especie" #especie="ngModel" #especieSelect required>
+            <option [ngValue]="{}" disabled>Selecione uma especie</option>
+            <option *ngFor="let e of especies" [ngValue]="e">{{ e.nome }}</option>
+          </select>
+          <div class="red-text" [hidden]="especie.valid || especie.untouched">
+            Por favor, selecione uma especie.
+          </div>
+        </div>
+        <div class="input-field col">
+          <label for="select-raca">Raça</label>
+          <br><br>
+          <select id="select-raca" name="select-raca" class="browser-default"
+            [compareWith]="compareRacas" [(ngModel)]="this.pet.raca" #raca="ngModel" #racaSelect required>
+            <option [ngValue]="{}" disabled>Selecione uma raça</option>
+            <option *ngFor="let r of racas" [ngValue]="r">{{ r.nome }}</option>
+          </select>
+          <div class="red-text" [hidden]="raca.valid || raca.untouched">
+            Por favor, selecione uma raça.
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+      <div class="input-field col">
+        <button class="btn waves-effect waves-light amber darken-4" type="submit" [disabled]="!form.valid"> Cadastrar</button>
+      </div>
+    </form>
 
-</span>
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pet</th>
+          <th>Data de nascimento</th>
+          <th>Raça/Especie</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of pets">
+          <td>{{ p.id }}</td>
+          <td>{{ p.nome }}</td>
+          <td>{{ p.dataNascimento | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ p.raca.nome }} / {{ p.especie.nome }}</td>
+          <td class="right">
+            <a
+              ><i class="material-icons my-icon-size" (click)="onEdit(p)"
+                >edit</i
+              ></a
+            >
+            <a
+              ><i class="material-icons my-icon-size" (click)="onDelete(p.nome)"
+                >delete</i
+              ></a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

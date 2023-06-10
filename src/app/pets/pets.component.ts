@@ -1,18 +1,119 @@
-import { Component } from '@angular/core';
+import { Shared } from './../util/shared';
+import { Raca } from './../../model/raca';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PetStorageService } from './pet-storage.service';
+import { Pet } from 'src/model/pet';
+import { Especie } from 'src/model/especie';
+import { EspecieStorageService } from '../especies/especie-storage.service';
+import { RacaStorageService } from '../racas/raca-storage.service';
 
 @Component({
   selector: 'app-pets',
   templateUrl: './pets.component.html',
-  styleUrls: ['./pets.component.css']
+  styleUrls: ['./pets.component.css'],
+  providers: [PetStorageService, EspecieStorageService, RacaStorageService]
 })
-export class PetsComponent {
-  nomePet: string;
+export class PetsComponent implements OnInit {
+  @ViewChild('form') form!: NgForm;
+  @ViewChild('especieSelect') especieSelect!: ElementRef;
+  @ViewChild('racaSelect') racaSelect!: ElementRef;
 
-  constructor() {
-    this.nomePet = "";
+  especies: Especie[];
+  racas?: Raca[];
+
+  pet!: Pet;
+  pets?: Pet[];
+
+  isSubmitted!: boolean;
+  isShowMessage: boolean = false;
+  isSuccess!: boolean;
+  message!: string;
+
+  constructor(private petService: PetStorageService, private especieService: EspecieStorageService, private racaService: RacaStorageService) {
+    this.especies = especieService.getEspecies();
+    setTimeout(() => {
+      M.FormSelect.init(this.especieSelect.nativeElement);
+    }, 100);
   }
 
-  nomearPet(event: any) {
-    this.nomePet = event.target.value;
+  ngOnInit(): void {
+    Shared.initializeWebStorage();
+    this.pet = new Pet('', '', new Raca(0, '', new Especie(0, '')), new Especie(0, ''));
+    this.pets = this.petService.getPets();
+    this.listarEspecies();
+  }
+
+  listarEspecies() {
+    this.especies = this.especieService.getEspecies();
+    setTimeout(() => {
+      M.FormSelect.init(this.especieSelect.nativeElement);
+    }, 100);
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+
+    if (!this.petService.isExist(this.pet.id)) {
+      this.petService.save(this.pet);
+    } else {
+      this.petService.update(this.pet);
+    }
+    this.isShowMessage = true;
+    this.isSuccess = true;
+    this.message = 'Cadastro realizado com sucesso!';
+
+    this.form.reset();
+    this.pet = new Pet('', '', new Raca(0, '', new Especie(0, '')), new Especie(0, ''));
+
+    this.pets = this.petService.getPets();
+
+    this.petService.notifyTotalPets();
+  }
+
+  compareEspecies(e1: Especie, e2: Especie) {
+    if (e1 != null && e2 != null) {
+      return e1.id == e2.id;
+    }
+    return false;
+  }
+
+  compareRacas(r1: Raca, r2: Raca) {
+    if (r1 != null && r2 != null) {
+      return r1.id == r2.id;
+    }
+    return false;
+  }
+
+  onChangeEspecie() {
+    this.listarRacas(this.pet.especie);
+  }
+
+  listarRacas(especie: Especie) {
+    this.racas = this.racaService.getRacas().filter((obj) => {
+      return obj.especie?.nome === especie.nome;
+    });
+    setTimeout(() => {
+      M.FormSelect.init(this.racaSelect.nativeElement);
+    }, 100);
+  }
+
+  onEdit(pet: Pet) {
+    let clonePet: Pet = Pet.clone(pet);
+    this.listarRacas(clonePet.especie);
+    this.pet = clonePet;
+
+    setTimeout(() => {
+      M.FormSelect.init(this.especieSelect.nativeElement);
+    }, 100);
+    setTimeout(() => {
+      M.FormSelect.init(this.racaSelect.nativeElement);
+    }, 100);
+  }
+
+  onDelete(nome: string) {
+    this.petService.delete(nome);
+    this.pets = this.petService.getPets();
+    this.petService.notifyTotalPets();
   }
 }
