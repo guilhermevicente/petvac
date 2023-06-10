@@ -15,6 +15,9 @@ import { MedicacaoComponent } from './medicacao/medicacao.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { ExamesComponent } from './exames/exames.component';
 import { PetSelecionadoComponent } from './pet-selecionado/pet-selecionado.component';
+import { FormsModule } from '@angular/forms';
+import { RacasComponent } from './racas/racas.component';
+import { EspeciesComponent } from './especies/especies.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,14 @@ import { PetSelecionadoComponent } from './pet-selecionado/pet-selecionado.compo
     MedicacaoComponent,
     ServicosComponent,
     ExamesComponent,
-    PetSelecionadoComponent
+    PetSelecionadoComponent,
+    RacasComponent,
+    EspeciesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
