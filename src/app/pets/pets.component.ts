@@ -7,6 +7,7 @@ import { Pet } from 'src/model/pet';
 import { Especie } from 'src/model/especie';
 import { EspecieStorageService } from '../especies/especie-storage.service';
 import { RacaStorageService } from '../racas/raca-storage.service';
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-pets',
