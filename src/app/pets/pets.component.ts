@@ -141,7 +141,7 @@ export class PetsComponent implements OnInit {
         this.obterPets();
       }
     }).catch((e) => {
-      console.log('Não foi possível buscar a lista de especies');
+      console.log('Não foi possível buscar a lista de pets');
     });
   }
 
