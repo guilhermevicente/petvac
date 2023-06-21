@@ -1,0 +1,50 @@
+{
+  "especies": [
+    {
+      "id": 1,
+      "nome": "Cachorro"
+    },
+    {
+      "id": 2,
+      "nome": "Gato"
+    }
+  ],
+  "racas": [
+    {
+      "id": 11,
+      "nome": "Dachshund",
+      "especieId": 1
+    },
+    {
+      "id": 12,
+      "nome": "Buldogue",
+      "especieId": 1
+    },
+    {
+      "id": 21,
+      "nome": "Angorá",
+      "especieId": 2
+    },
+    {
+      "id": 22,
+      "nome": "Siamês",
+      "especieId": 2
+    }
+  ],
+  "pets": [
+    {
+      "id": "geE-Ibb",
+      "nome": "Lisa",
+      "dataNascimento": "2023-06-04",
+      "raca": {
+        "id": 11,
+        "nome": "Dachshund",
+        "especieId": 1
+      },
+      "especie": {
+        "id": 1,
+        "nome": "Cachorro"
+      }
+    }
+  ]
+}

@@ -1,20 +1,28 @@
-import { Especie } from './../../model/especie';
-import { Constants } from 'src/app/util/constants';
-
 import { Injectable } from '@angular/core';
-
-import { WebStorageUtil } from 'src/app/util/web-storage-util';
 import { Raca } from 'src/model/raca';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class RacaStorageService {
   racas!: Raca[];
+  URL = 'http://localhost:3000/racas';
 
-  constructor() {
-    this.racas = WebStorageUtil.get(Constants.RACAS_KEY);
-  }
+  constructor(private httpClient: HttpClient) {}
 
-  getRacas(): Raca[] {
-    return this.racas;
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
+  async getRacas(): Promise<Raca[] | undefined> {
+    try {
+      const observable = this.httpClient.get<Raca[]>(`${this.URL}`);
+      return await lastValueFrom(observable);
+    } catch (error) {
+      console.error('Erro:', error);
+      return [];
+    }
   }
 }

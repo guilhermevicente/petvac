@@ -3,11 +3,11 @@ import { Especie } from "./especie";
 export class Raca {
   id: number;
   nome: string;
-  especie: Especie;
+  especieId: number;
 
-  constructor(id: number, nome: string, especie: Especie) {
+  constructor(id: number, nome: string, especieId: number) {
     this.id = id;
     this.nome = nome;
-    this.especie = especie;
+    this.especieId = especieId;
   }
 }
