@@ -7,53 +7,61 @@ import { Injectable } from '@angular/core';
 
 import { WebStorageUtil } from 'src/app/util/web-storage-util';
 
-@Injectable()
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
+@Injectable({
+  providedIn: 'root',
+})
 export class PetStorageService {
   pets!: Pet[];
-  private petSource!: BehaviorSubject<number>;
-  constructor() {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
-    this.petSource = new BehaviorSubject<number>(this.pets.length);
+  URL = 'http://localhost:3000/pets';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
+  constructor(private httpClient: HttpClient) {
+    this.preencherPets();
   }
 
-  save(pet: Pet) {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
-    this.pets.push(pet);
-    WebStorageUtil.set(Constants.PETS_KEY, this.pets);
+  async save(pet: Pet) {
+    const observable = await this.httpClient.post<Pet>(`${this.URL}`, JSON.stringify(pet), this.httpOptions);
+    return lastValueFrom(observable);
   }
 
-  update(pet: Pet) {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
-    this.delete(pet.nome);
-    this.save(pet);
+  async update(pet: Pet) {
+    const observable = await this.httpClient.put<Pet>(`${this.URL}/${pet.id}`, JSON.stringify(pet), this.httpOptions);
+    return lastValueFrom(observable);
   }
 
-  delete(nome: string): boolean {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
-    this.pets = this.pets.filter((u) => {
-      return u.nome?.valueOf() != nome?.valueOf();
-    });
-
-    WebStorageUtil.set(Constants.PETS_KEY, this.pets);
-    return true;
+  async delete(id: string) {
+    const observable = await this.httpClient.delete<Pet>(`${this.URL}/${id}`, this.httpOptions);
+    return lastValueFrom(observable);
   }
 
-  isExist(nome: string): boolean {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
+  isExist(id: string): boolean {
+    this.preencherPets();
+
     for (let u of this.pets) {
-      if (u.nome?.valueOf() == nome?.valueOf()) {
+      if (u.id?.valueOf() == id?.valueOf()) {
         return true;
       }
     }
     return false;
   }
 
-  getPets(): Pet[] {
-    this.pets = WebStorageUtil.get(Constants.PETS_KEY);
-    return this.pets;
+  preencherPets() {
+    this.buscarPets().then((pts: Pet[] | undefined) => {
+      if (pts !== undefined) {
+        this.pets = pts;
+      }
+    }).catch((e) => {
+      console.log('Não foi possível buscar a lista de especies');
+    });;
   }
 
-  notifyTotalPets() {
-    this.petSource.next(this.getPets()?.length);
+  async buscarPets(): Promise<Pet[]> {
+    const observable = await this.httpClient.get<Pet[]>(`${this.URL}`);
+    return lastValueFrom(observable);
   }
 }

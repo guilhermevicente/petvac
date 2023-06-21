@@ -18,6 +18,7 @@ import { PetSelecionadoComponent } from './pet-selecionado/pet-selecionado.compo
 import { FormsModule } from '@angular/forms';
 import { RacasComponent } from './racas/racas.component';
 import { EspeciesComponent } from './especies/especies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { EspeciesComponent } from './especies/especies.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

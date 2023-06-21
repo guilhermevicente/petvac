@@ -1,19 +1,30 @@
 import { Especie } from './../../model/especie';
-import { Constants } from 'src/app/util/constants';
 
 import { Injectable } from '@angular/core';
 
-import { WebStorageUtil } from 'src/app/util/web-storage-util';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-@Injectable()
+import { lastValueFrom } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
 export class EspecieStorageService {
-  especies!: Especie[];
+  URL = 'http://localhost:3000/especies';
 
-  constructor() {
-    this.especies = WebStorageUtil.get(Constants.ESPECIES_KEY);
-  }
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
-  getEspecies(): Especie[] {
-    return this.especies;
+  constructor(private httpClient: HttpClient) {}
+
+  async getEspecies(): Promise<Especie[] | undefined> {
+    try {
+      const observable = this.httpClient.get<Especie[]>(`${this.URL}`);
+      return await lastValueFrom(observable);
+    } catch (error) {
+      console.error('Erro:', error);
+      return [];
+    }
   }
 }

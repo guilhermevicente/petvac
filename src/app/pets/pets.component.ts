@@ -20,7 +20,7 @@ export class PetsComponent implements OnInit {
   @ViewChild('especieSelect') especieSelect!: ElementRef;
   @ViewChild('racaSelect') racaSelect!: ElementRef;
 
-  especies: Especie[];
+  especies?: Especie[];
   racas?: Raca[];
 
   pet!: Pet;
@@ -32,7 +32,6 @@ export class PetsComponent implements OnInit {
   message!: string;
 
   constructor(private petService: PetStorageService, private especieService: EspecieStorageService, private racaService: RacaStorageService) {
-    this.especies = especieService.getEspecies();
     setTimeout(() => {
       M.FormSelect.init(this.especieSelect.nativeElement);
     }, 100);
@@ -40,13 +39,20 @@ export class PetsComponent implements OnInit {
 
   ngOnInit(): void {
     Shared.initializeWebStorage();
-    this.pet = new Pet('', '', new Raca(0, '', new Especie(0, '')), new Especie(0, ''));
-    this.pets = this.petService.getPets();
+    this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
+    this.obterPets();
     this.listarEspecies();
   }
 
   listarEspecies() {
-    this.especies = this.especieService.getEspecies();
+    this.especieService.getEspecies().then((esp: Especie[] | undefined) => {
+      if (esp !== undefined) {
+        this.especies = esp;
+      }
+    }).catch((e) => {
+      console.log('Não foi possível buscar a lista de especies');
+    });
+
     setTimeout(() => {
       M.FormSelect.init(this.especieSelect.nativeElement);
     }, 100);
@@ -56,20 +62,30 @@ export class PetsComponent implements OnInit {
     this.isSubmitted = true;
 
     if (!this.petService.isExist(this.pet.id)) {
-      this.petService.save(this.pet);
+      this.petService.save(this.pet).then((pts: Pet | undefined) => {
+        if (pts !== undefined) {
+          console.log('Sucesso ao cadastrar o pet');
+        }
+      }).catch((e) => {
+        console.log('Não foi possível cadastrar o pet');
+      });
     } else {
-      this.petService.update(this.pet);
+      this.petService.update(this.pet).then((pts: Pet | undefined) => {
+        if (pts !== undefined) {
+          console.log('Sucesso ao atualizar o pet');
+        }
+      }).catch((e) => {
+        console.log('Não foi possível atualizar o pet');
+      });
     }
     this.isShowMessage = true;
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
 
     this.form.reset();
-    this.pet = new Pet('', '', new Raca(0, '', new Especie(0, '')), new Especie(0, ''));
+    this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
 
-    this.pets = this.petService.getPets();
-
-    this.petService.notifyTotalPets();
+    this.obterPets();
   }
 
   compareEspecies(e1: Especie, e2: Especie) {
@@ -91,9 +107,16 @@ export class PetsComponent implements OnInit {
   }
 
   listarRacas(especie: Especie) {
-    this.racas = this.racaService.getRacas().filter((obj) => {
-      return obj.especie?.nome === especie.nome;
+    this.racaService.getRacas().then((r: Raca[] | undefined) => {
+      if (r !== undefined) {
+        this.racas = r.filter((obj) => {
+          return obj.especieId === especie.id;
+        });
+      }
+    }).catch((e) => {
+      console.log('Não foi possível buscar a lista de especies');
     });
+
     setTimeout(() => {
       M.FormSelect.init(this.racaSelect.nativeElement);
     }, 100);
@@ -112,9 +135,23 @@ export class PetsComponent implements OnInit {
     }, 100);
   }
 
-  onDelete(nome: string) {
-    this.petService.delete(nome);
-    this.pets = this.petService.getPets();
-    this.petService.notifyTotalPets();
+  onDelete(id: string) {
+    this.petService.delete(id).then((p: Pet | undefined) => {
+      if (p !== undefined) {
+        this.obterPets();
+      }
+    }).catch((e) => {
+      console.log('Não foi possível buscar a lista de especies');
+    });
+  }
+
+  obterPets() {
+    this.petService.buscarPets().then((pts: Pet[] | undefined) => {
+      if (pts !== undefined) {
+        this.pets = pts;
+      }
+    }).catch((e) => {
+      console.log('Não foi possível buscar a lista de pets');
+    });
   }
 }
