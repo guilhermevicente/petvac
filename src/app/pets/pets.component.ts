@@ -63,7 +63,8 @@ export class PetsComponent implements OnInit {
     }, 100);
   }
 
-  onSubmit() {
+  // Comentado para publicação no GitHub Pages
+  /*onSubmit() {
     this.isSubmitted = true;
 
     if (!this.petService.isExist(this.pet.id)) {
@@ -95,6 +96,25 @@ export class PetsComponent implements OnInit {
         }
       );
     }
+  }*/
+
+  // Incluído para publicação no GitHub Pages
+  onSubmit() {
+    this.isSubmitted = true;
+
+    if (!this.petService.isExist(this.pet.id)) {
+      this.petService.save(this.pet);
+    } else {
+      this.petService.update(this.pet);
+    }
+    this.isShowMessage = true;
+    this.isSuccess = true;
+    this.message = 'Cadastro realizado com sucesso!';
+
+    this.form.reset();
+    this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
+
+    this.pets = this.petService.getPets();
   }
 
   compareEspecies(e1: Especie, e2: Especie) {
@@ -150,7 +170,8 @@ export class PetsComponent implements OnInit {
     }, 100);
   }
 
-  onDelete(id: string) {
+  // Comentado para publicação no GitHub Pages
+  /*onDelete(id: string) {
     this.petService.delete(id).subscribe({
       next: data => {
         this.isShowMessage = true;
@@ -165,9 +186,16 @@ export class PetsComponent implements OnInit {
         alert(error.message);
       }
     });
+  }*/
+
+  // Incluído para publicação no GitHub Pages
+  onDelete(nome: string) {
+    this.petService.delete(nome);
+    this.pets = this.petService.getPets();
   }
 
-  obterPets() {
+  // Comentado para publicação no GitHub Pages
+  /*obterPets() {
     this.petService.buscarPets().subscribe(
       (data: Pet[]) => {
         if (!data || data.length == 0) {
@@ -181,5 +209,10 @@ export class PetsComponent implements OnInit {
         alert(error.message);
       }
     );
+  }*/
+
+  // Incluído para publicação no GitHub Pages
+  obterPets() {
+    this.pets = this.petService.getPets();
   }
 }

@@ -74,16 +74,11 @@
           <td>{{ p.dataNascimento | date : 'dd/MM/yyyy' }}</td>
           <td>{{ p.especie | especieRaca: p.raca }}</td>
           <td class="right">
-            <a
-              ><i class="material-icons my-icon-size" (click)="onEdit(p)"
-                >edit</i
-              ></a
-            >
-            <a
-              ><i class="material-icons my-icon-size" (click)="onDelete(p.id)"
-                >delete</i
-              ></a
-            >
+            <a><i class="material-icons my-icon-size" (click)="onEdit(p)">edit</i></a>
+            <!-- Comentado para publicação no GitHub Pages -->
+            <!-- <a><i class="material-icons my-icon-size" (click)="onDelete(p.id)">delete</i></a> -->
+            <!-- Incluído para publicação no GitHub Pages -->
+            <a><i class="material-icons my-icon-size" (click)="onDelete(p.nome)">delete</i></a>
           </td>
         </tr>
       </tbody>
