@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { RacasComponent } from './racas/racas.component';
 import { EspeciesComponent } from './especies/especies.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EspecieRacaPipe } from './especie-raca.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     ExamesComponent,
     PetSelecionadoComponent,
     RacasComponent,
-    EspeciesComponent
+    EspeciesComponent,
+    EspecieRacaPipe
   ],
   imports: [
     BrowserModule,

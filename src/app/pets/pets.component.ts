@@ -38,20 +38,25 @@ export class PetsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    Shared.initializeWebStorage();
     this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
     this.obterPets();
     this.listarEspecies();
   }
 
   listarEspecies() {
-    this.especieService.getEspecies().then((esp: Especie[] | undefined) => {
-      if (esp !== undefined) {
-        this.especies = esp;
+    this.especieService.getEspecies().subscribe(
+      (data: Especie[]) => {
+        if (!data || data.length == 0) {
+          alert('Especies não encontradas!');
+        }
+        this.especies = data;
+      },
+      (error) => {
+        console.log('componente');
+        console.log(error);
+        alert(error.message);
       }
-    }).catch((e) => {
-      console.log('Não foi possível buscar a lista de especies');
-    });
+    );
 
     setTimeout(() => {
       M.FormSelect.init(this.especieSelect.nativeElement);
@@ -62,30 +67,34 @@ export class PetsComponent implements OnInit {
     this.isSubmitted = true;
 
     if (!this.petService.isExist(this.pet.id)) {
-      this.petService.save(this.pet).then((pts: Pet | undefined) => {
-        if (pts !== undefined) {
-          console.log('Sucesso ao cadastrar o pet');
+      this.petService.save(this.pet).subscribe(
+        (data) => {
+          this.isShowMessage = true;
+          this.isSuccess = true;
+          this.message = 'Sucesso ao cadastrar o pet!';
+          this.form.reset();
+          this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
+          this.obterPets();
+        },
+        (error) => {
+          alert('Não foi possível cadastrar o pet');
         }
-      }).catch((e) => {
-        console.log('Não foi possível cadastrar o pet');
-      });
+      );
     } else {
-      this.petService.update(this.pet).then((pts: Pet | undefined) => {
-        if (pts !== undefined) {
-          console.log('Sucesso ao atualizar o pet');
+      this.petService.update(this.pet).subscribe(
+        (data) => {
+          this.isShowMessage = true;
+          this.isSuccess = true;
+          this.message = 'Sucesso ao atualizar o pet!';
+          this.form.reset();
+          this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
+          this.obterPets();
+        },
+        (error) => {
+          alert('Não foi possível atualizar o pet');
         }
-      }).catch((e) => {
-        console.log('Não foi possível atualizar o pet');
-      });
+      );
     }
-    this.isShowMessage = true;
-    this.isSuccess = true;
-    this.message = 'Cadastro realizado com sucesso!';
-
-    this.form.reset();
-    this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
-
-    this.obterPets();
   }
 
   compareEspecies(e1: Especie, e2: Especie) {
@@ -107,15 +116,21 @@ export class PetsComponent implements OnInit {
   }
 
   listarRacas(especie: Especie) {
-    this.racaService.getRacas().then((r: Raca[] | undefined) => {
-      if (r !== undefined) {
-        this.racas = r.filter((obj) => {
+    this.racaService.getRacas().subscribe(
+      (data: Raca[]) => {
+        if (!data || data.length == 0) {
+          alert('Raças não encontradas!');
+        }
+        this.racas = data.filter((obj) => {
           return obj.especieId === especie.id;
         });
+      },
+      (error) => {
+        console.log('componente');
+        console.log(error);
+        alert(error.message);
       }
-    }).catch((e) => {
-      console.log('Não foi possível buscar a lista de especies');
-    });
+    );
 
     setTimeout(() => {
       M.FormSelect.init(this.racaSelect.nativeElement);
@@ -136,22 +151,35 @@ export class PetsComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    this.petService.delete(id).then((p: Pet | undefined) => {
-      if (p !== undefined) {
+    this.petService.delete(id).subscribe({
+      next: data => {
+        this.isShowMessage = true;
+        this.isSuccess = true;
+        this.message = 'Sucesso ao remover o pet!';
+        this.form.reset();
         this.obterPets();
+      },
+      error: error => {
+        console.log('componente');
+        console.log(error);
+        alert(error.message);
       }
-    }).catch((e) => {
-      console.log('Não foi possível buscar a lista de pets');
     });
   }
 
   obterPets() {
-    this.petService.buscarPets().then((pts: Pet[] | undefined) => {
-      if (pts !== undefined) {
-        this.pets = pts;
+    this.petService.buscarPets().subscribe(
+      (data: Pet[]) => {
+        if (!data || data.length == 0) {
+          alert('Pets não encontrados!');
+        }
+        this.pets = data;
+      },
+      (error) => {
+        console.log('componente');
+        console.log(error);
+        alert(error.message);
       }
-    }).catch((e) => {
-      console.log('Não foi possível buscar a lista de pets');
-    });
+    );
   }
 }

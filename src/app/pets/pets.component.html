@@ -72,7 +72,7 @@
           <td>{{ p.id }}</td>
           <td>{{ p.nome }}</td>
           <td>{{ p.dataNascimento | date : 'dd/MM/yyyy' }}</td>
-          <td>{{ p.raca.nome }} / {{ p.especie.nome }}</td>
+          <td>{{ p.especie | especieRaca: p.raca }}</td>
           <td class="right">
             <a
               ><i class="material-icons my-icon-size" (click)="onEdit(p)"
