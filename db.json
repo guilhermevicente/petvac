@@ -45,6 +45,20 @@
         "id": 1,
         "nome": "Cachorro"
       }
+    },
+    {
+      "id": "YeJBY_u",
+      "nome": "pedro",
+      "dataNascimento": "2023-06-05",
+      "raca": {
+        "id": 11,
+        "nome": "Dachshund",
+        "especieId": 1
+      },
+      "especie": {
+        "id": 1,
+        "nome": "Cachorro"
+      }
     }
   ]
 }

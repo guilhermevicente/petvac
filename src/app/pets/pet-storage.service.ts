@@ -5,16 +5,16 @@ import { BehaviorSubject } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 
-import { WebStorageUtil } from 'src/app/util/web-storage-util';
+import { Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { RoutesAPI } from '../util/routes-api';
 @Injectable({
   providedIn: 'root',
 })
 export class PetStorageService {
   pets!: Pet[];
-  URL = 'http://localhost:3000/pets';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -24,19 +24,16 @@ export class PetStorageService {
     this.preencherPets();
   }
 
-  async save(pet: Pet) {
-    const observable = await this.httpClient.post<Pet>(`${this.URL}`, JSON.stringify(pet), this.httpOptions);
-    return lastValueFrom(observable);
+  save(pet: Pet): Observable<Pet> {
+    return this.httpClient.post<Pet>(`${RoutesAPI.PETS}`, JSON.stringify(pet), this.httpOptions);
   }
 
-  async update(pet: Pet) {
-    const observable = await this.httpClient.put<Pet>(`${this.URL}/${pet.id}`, JSON.stringify(pet), this.httpOptions);
-    return lastValueFrom(observable);
+  update(pet: Pet):  Observable<Pet> {
+    return this.httpClient.put<Pet>(`${RoutesAPI.PETS}/${pet.id}`, JSON.stringify(pet), this.httpOptions);
   }
 
-  async delete(id: string) {
-    const observable = await this.httpClient.delete<Pet>(`${this.URL}/${id}`, this.httpOptions);
-    return lastValueFrom(observable);
+  delete(id: string) {
+    return this.httpClient.delete<Pet>(`${RoutesAPI.PETS}/${id}`, this.httpOptions);
   }
 
   isExist(id: string): boolean {
@@ -51,17 +48,22 @@ export class PetStorageService {
   }
 
   preencherPets() {
-    this.buscarPets().then((pts: Pet[] | undefined) => {
-      if (pts !== undefined) {
-        this.pets = pts;
+    this.buscarPets().subscribe(
+      (data: Pet[]) => {
+        if (!data || data.length == 0) {
+          alert('Pets não encontrados!');
+        }
+        this.pets = data;
+      },
+      (error) => {
+        console.log('componente');
+        console.log(error);
+        alert(error.message);
       }
-    }).catch((e) => {
-      console.log('Não foi possível buscar a lista de especies');
-    });;
+    );
   }
 
-  async buscarPets(): Promise<Pet[]> {
-    const observable = await this.httpClient.get<Pet[]>(`${this.URL}`);
-    return lastValueFrom(observable);
+  buscarPets(): Observable<Pet[]> {
+    return this.httpClient.get<Pet[]>(`${RoutesAPI.PETS}`);
   }
 }
