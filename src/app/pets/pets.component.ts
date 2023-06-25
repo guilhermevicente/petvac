@@ -38,6 +38,10 @@ export class PetsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // Incluído para publicação no GitHub Pages
+    Shared.initializeWebStorage();
+
     this.pet = new Pet('', '', '', new Raca(0, '', 0), new Especie(0, ''));
     this.obterPets();
     this.listarEspecies();
