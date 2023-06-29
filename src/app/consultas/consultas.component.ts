@@ -31,9 +31,9 @@ export class ConsultasComponent implements OnInit {
     }, 100);
   }
 
-  abrirExames() {
+  abrirExames(idConsulta: string) {
     //var idConsulta = (<HTMLInputElement>document.getElementById('id-consulta')).value;
-    this.router.navigate(['/consultas/exames', this.consulta.id]);
+    this.router.navigate(['/consultas/exames', idConsulta]);
   }
 
   onSubmit() {

@@ -102,5 +102,27 @@
         }
       }
     }
+  ],
+  "exames": [
+    {
+      "id": 2,
+      "idConsulta": "2",
+      "data": "2023-06-06",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      },
+      "descricao": "urina"
+    }
   ]
 }

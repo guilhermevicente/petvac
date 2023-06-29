@@ -51,7 +51,7 @@
           <td>{{ c.pet.nome }}</td>
           <td>{{ c.data | date : 'dd/MM/yyyy' }}</td>
           <td>
-            <a routerLink="" (click)="abrirExames()">
+            <a routerLink="" (click)="abrirExames(c.id)">
               <div><span>Agendar Exame</span></div>
             </a>
           </td>
