@@ -82,5 +82,25 @@
         }
       }
     }
+  ],
+  "consultas": [
+    {
+      "id": 2,
+      "data": "2023-06-23",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    }
   ]
 }
