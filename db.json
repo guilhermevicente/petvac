@@ -60,5 +60,27 @@
         "nome": "Cachorro"
       }
     }
+  ],
+  "vacinas": [
+    {
+      "id": 3,
+      "nome": "Vac12",
+      "dataVacina": "2023-06-28",
+      "dataProximaVacina": "2023-06-29",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    }
   ]
 }
