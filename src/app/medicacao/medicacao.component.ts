@@ -60,13 +60,13 @@ export class MedicacaoComponent implements OnInit {
         (data) => {
           this.isShowMessage = true;
           this.isSuccess = true;
-          this.message = 'Sucesso ao cadastrar a vacina!';
+          this.message = 'Sucesso ao cadastrar a medicação!';
           this.form.reset();
           this.medicacao = new Medicacao('', '', '',new Pet('', '', '', new Raca(0, '', 0), new Especie(0, '')));
           this.obterMedicacoes();
         },
         (error) => {
-          alert('Não foi possível cadastrar a vacina');
+          alert('Não foi possível cadastrar a medicação');
         }
       );
     } else {
@@ -74,13 +74,13 @@ export class MedicacaoComponent implements OnInit {
         (data) => {
           this.isShowMessage = true;
           this.isSuccess = true;
-          this.message = 'Sucesso ao atualizar a vacina!';
+          this.message = 'Sucesso ao atualizar a medicação!';
           this.form.reset();
           this.medicacao = new Medicacao('', '', '',new Pet('', '', '', new Raca(0, '', 0), new Especie(0, '')));
           this.obterMedicacoes();
         },
         (error) => {
-          alert('Não foi possível atualizar a vacina');
+          alert('Não foi possível atualizar a medicação');
         }
       );
     }
