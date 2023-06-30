@@ -6,4 +6,5 @@ export class RoutesAPI {
   public static readonly CONSULTAS = 'http://localhost:3000/consultas';
   public static readonly EXAMES = 'http://localhost:3000/exames';
   public static readonly MEDICACOES = 'http://localhost:3000/medicacoes';
+  public static readonly SERVICOS = 'http://localhost:3000/servicos';
 }

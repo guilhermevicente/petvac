@@ -105,7 +105,7 @@ export class MedicacaoComponent implements OnInit {
       next: data => {
         this.isShowMessage = true;
         this.isSuccess = true;
-        this.message = 'Sucesso ao remover a vacina!';
+        this.message = 'Sucesso ao remover a medicação!';
         this.form.reset();
         this.obterMedicacoes();
       },
@@ -121,7 +121,7 @@ export class MedicacaoComponent implements OnInit {
     this.medicacaoService.buscarMedicacoes().subscribe(
       (data: Medicacao[]) => {
         if (!data || data.length == 0) {
-          alert('Vacinas não encontradas!');
+          alert('Medicações não encontradas!');
         }
         this.medicacoes = data;
       },
