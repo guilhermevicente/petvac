@@ -13,7 +13,7 @@ import { PetStorageService } from '../pets/pet-storage.service';
   templateUrl: './exames.component.html',
   styleUrls: ['./exames.component.css']
 })
-export class ExamesComponent {
+export class ExamesComponent implements OnInit {
   @ViewChild('petSelect') petSelect!: ElementRef;
   @ViewChild('form') form!: NgForm;
   isSuccess!: boolean;
