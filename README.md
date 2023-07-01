@@ -49,3 +49,7 @@ https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3
   - Comando: `npm run json-server`
 
 OBS: ainda é preciso executar a api fake localmente pois o projeto ainda não possui um backend.
+
+## Video
+
+- Apresentação do trabalho está sendo gravada.
