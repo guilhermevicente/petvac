@@ -1,0 +1,226 @@
+{
+  "especies": [
+    {
+      "id": 1,
+      "nome": "Cachorro"
+    },
+    {
+      "id": 2,
+      "nome": "Gato"
+    }
+  ],
+  "racas": [
+    {
+      "id": 11,
+      "nome": "Dachshund",
+      "especieId": 1
+    },
+    {
+      "id": 12,
+      "nome": "Buldogue",
+      "especieId": 1
+    },
+    {
+      "id": 21,
+      "nome": "Angorá",
+      "especieId": 2
+    },
+    {
+      "id": 22,
+      "nome": "Siamês",
+      "especieId": 2
+    }
+  ],
+  "pets": [
+    {
+      "id": "geE-Ibb",
+      "nome": "Lisa",
+      "dataNascimento": "2023-06-04",
+      "raca": {
+        "id": 11,
+        "nome": "Dachshund",
+        "especieId": 1
+      },
+      "especie": {
+        "id": 1,
+        "nome": "Cachorro"
+      }
+    },
+    {
+      "id": "YeJBY_u",
+      "nome": "pedro",
+      "dataNascimento": "2023-06-05",
+      "raca": {
+        "id": 11,
+        "nome": "Dachshund",
+        "especieId": 1
+      },
+      "especie": {
+        "id": 1,
+        "nome": "Cachorro"
+      }
+    }
+  ],
+  "vacinas": [
+    {
+      "id": 3,
+      "nome": "Vac12",
+      "dataVacina": "2023-06-28",
+      "dataProximaVacina": "2023-06-29",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    }
+  ],
+  "consultas": [
+    {
+      "id": 2,
+      "data": "2023-06-23",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "data": "2023-07-04",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "data": "2023-06-27",
+      "pet": {
+        "id": "YeJBY_u",
+        "nome": "pedro",
+        "dataNascimento": "2023-06-05",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    }
+  ],
+  "exames": [
+    {
+      "id": 2,
+      "idConsulta": "2",
+      "data": "2023-06-06",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      },
+      "descricao": "urina"
+    },
+    {
+      "id": 3,
+      "idConsulta": "4",
+      "data": "2023-07-10",
+      "pet": {
+        "id": "YeJBY_u",
+        "nome": "pedro",
+        "dataNascimento": "2023-06-05",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      },
+      "descricao": "Vac13"
+    }
+  ],
+  "medicacoes": [
+    {
+      "id": 1,
+      "nome": "REME s",
+      "posologia": "2 vez ao dia",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    }
+  ],
+  "servicos": [
+    {
+      "id": 1,
+      "descricao": "Tosa e Banho",
+      "data": "2023-06-30",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    }
+  ]
+}
