@@ -53,4 +53,4 @@ OBS: ainda é preciso executar a api fake localmente pois o projeto ainda não p
 
 ## Video
 
-- Apresentação do trabalho está sendo gravada.
+https://www.youtube.com/watch?v=WDvNvcAYvks
