@@ -43,7 +43,7 @@ https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3
 
 ## Sistema em produção
 
-- Acessar o link: https://guilhermevicente.github.io/petvac/pets
+- Acessar o link: https://guilhermevicente.github.io/petvac/
 -  Abrir o projeto no editor Visual Studio Code (VS Code)
 - Abrir um terminal pelo VSCode e executar a API Fake (JSON Server) via o seguinte comando: 
   - Comando: `npm run json-server`

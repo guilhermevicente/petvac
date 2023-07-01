@@ -1,4 +1,7 @@
-<span>
+<span [hidden]="!this.isWorkingInPage">
+  Estamos trabalhando nessa pagina :)
+</span>
+<span [hidden]="this.isWorkingInPage">
   <div id="painel-servicos">
     <h5>Página principal</h5>
     <hr />

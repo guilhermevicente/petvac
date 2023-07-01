@@ -101,6 +101,42 @@
           "nome": "Cachorro"
         }
       }
+    },
+    {
+      "id": 3,
+      "data": "2023-07-04",
+      "pet": {
+        "id": "geE-Ibb",
+        "nome": "Lisa",
+        "dataNascimento": "2023-06-04",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "data": "2023-06-27",
+      "pet": {
+        "id": "YeJBY_u",
+        "nome": "pedro",
+        "dataNascimento": "2023-06-05",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      }
     }
   ],
   "exames": [
@@ -123,6 +159,26 @@
         }
       },
       "descricao": "urina"
+    },
+    {
+      "id": 3,
+      "idConsulta": "4",
+      "data": "2023-07-10",
+      "pet": {
+        "id": "YeJBY_u",
+        "nome": "pedro",
+        "dataNascimento": "2023-06-05",
+        "raca": {
+          "id": 11,
+          "nome": "Dachshund",
+          "especieId": 1
+        },
+        "especie": {
+          "id": 1,
+          "nome": "Cachorro"
+        }
+      },
+      "descricao": "Vac13"
     }
   ],
   "medicacoes": [

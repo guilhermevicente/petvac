@@ -36,6 +36,9 @@
           <div class="red-text" *ngIf="descricao.errors?.['required'] && descricao.touched">Por favor, descreva o exame do pet.</div>
           <span class="helper-text" data-error="O campo é inválido" data-success="Ok!"></span>
         </div>
+        <div class="row">
+          <app-pet-selecionado [nomePet]="this.exame.pet.nome"></app-pet-selecionado>
+        </div>
       </div>
       <div class="input-field col">
         <button class="btn waves-effect waves-light amber darken-4" type="submit" [disabled]="!form.valid">Cadastrar</button>

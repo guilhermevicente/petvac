@@ -28,6 +28,9 @@
           <input id="dataconsulta-pet" name="dataconsulta-pet" type="date" class="validate" [(ngModel)]="this.consulta.data" #dataconsulta="ngModel" required>
           <div class="red-text" *ngIf="dataconsulta.errors?.['required'] && dataconsulta.touched">Por favor, informe a data da consulta do seu pet.</div>
         </div>
+        <div class="row">
+          <app-pet-selecionado [nomePet]="this.consulta.pet.nome"></app-pet-selecionado>
+        </div>
       </div>
       <div class="input-field col">
         <button class="btn waves-effect waves-light amber darken-4" type="submit" [disabled]="!form.valid">Cadastrar</button>

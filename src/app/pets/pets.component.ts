@@ -1,4 +1,3 @@
-import { Shared } from './../util/shared';
 import { Raca } from './../../model/raca';
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { NgForm } from '@angular/forms';
