@@ -4,7 +4,7 @@ Este projeto tem como objetivo implementar o projeto da disciplina de frameworks
 
 ## Endereço de Deploy - GitHub Pages
 
-Ainda não publicado
+https://guilhermevicente.github.io/petvac/
 
 ## Protótipo
 
