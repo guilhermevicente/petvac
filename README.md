@@ -1,16 +1,17 @@
-# petvac
+# PetVac
 
-Este projeto tem como objetivo implementar o projeto da disciplina de frameworks. O nome do projeto é PetVac.
+Esse é um projeto que simula o controle de uma clínica veterinária/petshop. Descrição do problema: [Clique aqui](https://moodle.utfpr.edu.br/pluginfile.php/2906636/assignsubmission_file/submission_files/3850499/petvac.pdf?forcedownload=1)
+Este projeto tem como objetivo implementar os conceitos ensinado da disciplina de frameworks web da especialização em técnologia Java da UTFPR.
 
-## Endereço de Deploy - GitHub Pages
+## Endereço de Produção (Deploy no GitHub Pages)
 
 https://guilhermevicente.github.io/petvac/
 
-## Protótipo
+## Protótipo (Figma)
 
 https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3A8&t=WlVsidSvyOMS9Bhn-1
 
-## Video
+## Video (YoutTube)
 
 https://www.youtube.com/watch?v=WDvNvcAYvks
 
