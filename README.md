@@ -28,15 +28,24 @@ https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3
 - [X] Cadastrar uma entidade no JSON Server.
 - [X] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [X] Usar a diretiva ngIf
-- [ ] Formatar a apresentação de dados com Pipes.
-- [ ] Build e deploy da aplicação.
+- [X] Formatar a apresentação de dados com Pipes.
+- [X] Build e deploy da aplicação.
 
 ## Manual de execução
-- Clonar o repositório com `git clone`
+- Clonar o repositório com `git clone https://github.com/guilhermevicente/petvac.git`
 - Fazer checkout no branch `develop` que contém as modificações mais recentes
 - Abrir o projeto no editor Visual Studio Code (VS Code)
 - Abrir um terminal pelo VSCode e executar a API Fake (JSON Server) via o seguinte comando: 
-  - Comando: `npm run json-server --watch db.json --routes routes.json`
+  - Comando: `npm run json-server`
   - O comando deve ser aplicado no diretório raiz do projeto, ou seja, que contém o arquivo `db.json` e `routes.json`.
 - Abrir um novo terminal pelo VSCode e então executar o projeto Angular
-  - Comando: `ng s`
+  - Comando: `ng serve`
+
+## Sistema em produção
+
+- Acessar o link: https://guilhermevicente.github.io/petvac/
+-  Abrir o projeto no editor Visual Studio Code (VS Code)
+- Abrir um terminal pelo VSCode e executar a API Fake (JSON Server) via o seguinte comando: 
+  - Comando: `npm run json-server`
+
+OBS: ainda é preciso executar a api fake localmente pois o projeto ainda não possui um backend.
