@@ -28,8 +28,8 @@ https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3
 - [X] Cadastrar uma entidade no JSON Server.
 - [X] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [X] Usar a diretiva ngIf
-- [ ] Formatar a apresentação de dados com Pipes.
-- [ ] Build e deploy da aplicação.
+- [X] Formatar a apresentação de dados com Pipes.
+- [X] Build e deploy da aplicação.
 
 ## Manual de execução
 - Clonar o repositório com `git clone`
