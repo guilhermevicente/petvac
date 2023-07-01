@@ -43,10 +43,11 @@ https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3
 
 ## Sistema em produção
 
-- Acessar o link: https://guilhermevicente.github.io/petvac/
--  Abrir o projeto no editor Visual Studio Code (VS Code)
-- Abrir um terminal pelo VSCode e executar a API Fake (JSON Server) via o seguinte comando: 
-  - Comando: `npm run json-server`
+- Acessar o link: https://guilhermevicente.github.io/petvac/ e realizar o clone do projeto `git clone https://github.com/guilhermevicente/petvac.git`
+- Instalar o projeto `npm install`
+- Abrir o projeto no editor Visual Studio Code (VS Code)
+- Abrir um terminal pelo VSCode e executar a API Fake (JSON Server) via o seguinte comando: `npm run json:server`
+- Acessar https://guilhermevicente.github.io/petvac/
 
 OBS: ainda é preciso executar a api fake localmente pois o projeto ainda não possui um backend.
 
