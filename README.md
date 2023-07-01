@@ -10,6 +10,10 @@ https://guilhermevicente.github.io/petvac/
 
 https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3A8&t=WlVsidSvyOMS9Bhn-1
 
+## Video
+
+https://www.youtube.com/watch?v=WDvNvcAYvks
+
 ## Checklist
 
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
@@ -50,7 +54,3 @@ https://www.figma.com/file/A1WKgpxUbrGYC0WlBKAx0D/PetVac?type=design&node-id=5%3
 - Acessar https://guilhermevicente.github.io/petvac/
 
 OBS: ainda é preciso executar a api fake localmente pois o projeto ainda não possui um backend.
-
-## Video
-
-https://www.youtube.com/watch?v=WDvNvcAYvks
